@@ -96,15 +96,16 @@ const toNewPatientEntry = ({name, dateOfBirth, ssn, gender, occupation}: Fields)
   return newEntry;
 };
 
-export default {
+const utils = {
     getDiagnosesEntries,
     addDiagnose,
     getPatientsEntries,
     getPatientsEntriesWithoutSsn,
     addPatient,
     toNewPatientEntry
-    
 };
+
+export default utils;
 
 
 
