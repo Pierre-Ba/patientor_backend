@@ -1,6 +1,8 @@
+
 import DiagnosesEntries from "../../data/diagnoses";
 import PatientsEntries from "../../data/patients";
-import { Diagnose, Patient, PatientWithoutSsn } from "../types";
+import { Diagnose, Patient, PatientWithoutSsn, NewPatientEntry } from "../types";
+import { v1 as uuid } from 'uuid';
 
 const getDiagnosesEntries = (): Array<Diagnose> => {
     return DiagnosesEntries;
@@ -24,8 +26,16 @@ const getPatientsEntriesWithoutSsn = (): PatientWithoutSsn[] => {
     }));
 };
 
-const addPatient = () => {
-    return null;
+const addPatient = (entry: NewPatientEntry): Patient => {
+    const id = uuid();
+    const stringifiedId = id.toString();
+    const newPatientEntry = {
+        id: stringifiedId,
+        ...entry
+    };
+    PatientsEntries.push(newPatientEntry);
+    return newPatientEntry;
+
 };
 
 export default {
